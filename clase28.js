@@ -4,10 +4,13 @@ Un callback es una función que se pasa a otra función como un argumento. Esta 
 dentro de la función externa para completar alguna acción.
 */
 
-const API_URL = 'https://swapi.co/api/'
-const PEOPLE_URL = 'people/:id'
+const API_URL = 'http://pokeapi.co/api/v2/'
+const PEOPLE_URL = ' pokemon/:id'
 //primer parametro del get
 const lukeUrl = `${API_URL}${PEOPLE_URL.replace(':id',2)}`
+
+const lenin = 'https://pokeapi.co/api/v2/pokemon/2/'
+
 //segundo parametro, indica que se hace el request a otra pagina
 const opts = {crossDomain: true}
 
@@ -27,9 +30,9 @@ console.log(`Hola yo soy ${luke.name}`);
 */
 
 const onPeopleResponse = function(persona){
-//  console.log(arguments);
-  console.log(`Hola yo soy, ${persona.name}`);
+  console.log(arguments);
+ console.log(`Hola yo soy, ${persona.name}`);
 }
 
 //callback es una funcion que se va a ejecutar en algun futuro, o que nunca se llame
-$.get(lukeUrl, opts, onPeopleResponse)
+$.get(lenin, opts, onPeopleResponse)
