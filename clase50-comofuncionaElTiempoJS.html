@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Como funciona el tiempo en JavaScript</title>
+  </head>
+  <body>
+    <script>
+
+    console.log('a')
+    /*
+    setTimeout(function(){
+      console.log('b')
+    }, 400)*/
+    //lo envia a otra cola se ejecuta una vez termine el codigo principal
+    setTimeout(()=>console.log('b'),200)
+    console.log('c')
+    console.log('d')
+
+    //los dos segundos es un tiempo minimo, pero este se ejcuta una vez termine el codigo
+    setTimeout(()=>console.log('ñ'),200)
+    for (var i = 0; i < 100000000000; i++) {
+    }
+
+
+    </script>
+  </body>
+</html>
