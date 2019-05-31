@@ -80,26 +80,101 @@
     </div>
     <script>
 
-    const celeste = document.getElementById('celeste')
-    const violeta = document.getElementById('violeta')
-    const naranja = document.getElementById('naranja')
-    const verde = document.getElementById('verde')
-    const btnEmpezar = document.getElementById('btnEmpezar')
+      //obteniendo los botones con getElementById(id)
+      const btnEmpezar = document.getElementById('btnEmpezar');
+      const celeste = document.getElementById('celeste');
+      const violesta = document.getElementById('celeste');
+      const naranja = document.getElementById('naranja');
+      const verde = document.getElementById('verde');
 
-    class Juego {
-      constructor() {
-          this.inicializar()
+      //es la clase que va a tener toda la logica del juego
+      class Juego{
+        //definimos el constructor
+        constructor(){
+          this.inicializar();
+          this.generarSecuencia();
+          this.siguienteNivel();
+        }
+        //metodo
+        inicializar() {
+      //le agregamos la clase de css hide para que se oculte
+          btnEmpezar.classList.add('hide');
+          //variable para manejar el aumento de nivel
+          this.nivel = 1;
+          //guardando los colores en un objeto
+          //Estos son los botones de html los elementos del DOM
+          this.colores = {
+            celeste: celeste,
+            //otra forma de guardar un atributo cuando el nombre y la asignación son iguales
+            violeta,
+            naranja,
+            verde
+          }
+        }
+        //metodo
+        generarSecuencia() {
+          //atributo del juego
+          //fill define los elementos del array en ceros sin esto el map no funciona
+          //Math.random() es un valor entre 0 y 1 con decimales
+          //Math.floor redonde para abajo 3.9 a 3
+          this.secuencia = new Array(10).fill(0).map(n => Math.floor(Math.random() * 4));
+        }
+
+        //Metodo
+        siguienteNivel() {
+          this.iluminarSecuencia();
+        }
+        //Metodo para transformar de un numero a color
+        transformarNumeroAColor(numero) {
+          switch (numero) {
+             case 0 : 
+              return 'celeste';
+            case 1 :
+              return 'violeta';
+            case 2 : 
+              return 'naranja';
+            case 3 :
+              return 'verde';
+          }
+          //no se coloca break porque se ejecuta el return
+        }
+
+        //Metodo o funcion
+        iluminarSecuencia() {
+          for(let i = 0; i< this.nivel; i++) {
+            
+            const color = this.transformarNumeroAColor(this.secuencia[i]);
+            //se ilumina pasando un segundo dependiendo de i
+            setTimeout(() => this.iluminarColor(color), 1000 * i);
+            
+          }
+        }
+
+        iluminarColor(color) {
+          //agregando la clase ligth al boton de color
+          this.colores[color].classList.add('light');
+          //apagamos el boton despues de pasado un tiempo
+          setTimeout(() => this.apagarColor(color), 1500);
+        }
+        apagarColor(color) {
+          //[color] es el boton
+          this.colores[color].classList.remove('light');
+        }
+
       }
 
-      inicializar(){
-          btnEmpezar.classList.add('hide')
-      }
+      
 
+    function empezarJuego() {
+
+    //var juego es una variable a nivel de funcion (variable local) y con window.juego es una variable a nivel global y se puede ver desde la consola
+     //var juego = new Juego(); 
+     window.juego = new Juego();
+     //window.lenin = new Juego();
     }
 
-    function empezarJuego(){
-      var juego = new Juego()
-    }
+    
+
 
     </script>
   </body>
