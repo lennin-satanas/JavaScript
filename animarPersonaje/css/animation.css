@@ -1,0 +1,83 @@
+/* body{
+  background: RED;
+} */
+
+/* CSS index */
+.titulo {
+  background: red;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 28px;
+  color: aliceblue;
+  text-align: center;
+}
+
+.entrar {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+ 
+
+}
+
+.entrar:active{
+  background: red;
+}
+
+/* CSS saludo */
+.personaje {
+  height: 325px;
+  width: 180px;
+  background-image: url("../img/boberto.png");
+  /* margin: 0 auto; */
+  /* background-position: -1112.25px; */
+  animation-timing-function: ease-in;
+  animation: correr 1.5s steps(8) forwards;
+  /* animation-fill-mode: forwards; */
+  /* border: solid 2px red; */
+  position: absolute;
+  left: 0;
+  bottom: 400px;
+  animation-play-state: paused;
+
+}
+
+.fondo {
+  height: 530px;
+  width: 1500px;
+  position: relative;
+  background-image: url("../img/pngocean.com-id-zxvcs.png");
+  border: solid 1px red;
+  animation: animarFondo 5s linear infinite;
+  margin: 0 0;
+  animation-play-state: paused;
+
+}
+
+@keyframes correr {
+  0%{
+    background-position: -0px;
+    transform: translateX(0px);
+  }
+  100%{
+    background-position: -1483px;
+    transform: translateX(500px);
+  }
+  
+}
+
+@keyframes animarFondo {
+  0%{
+    background-position: 0px;
+  }
+  100%{
+    background-position: -1500px;
+  }
+}
+
