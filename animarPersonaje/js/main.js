@@ -25,11 +25,29 @@ function StartFondo() {
   document.getElementById("fondo").style.animationPlayState = "running";  
 }
 
+// function redireccionar() {
+//   alert("Redireccionar");
+// }
+
+entrar.onclick = function() {
+  
+
+  setTimeout(()=> {
+    
+    window.open("html/saludo.html", "_self");
+  },2000);
+}
+
+
 var saludo = document.getElementById("saludo");
 
 function saludar() {
   console.log("Estoy en saludar");
-  saludo.muted = false;
+
+
+
+
+  // saludo.muted = false;
 
 }
 
