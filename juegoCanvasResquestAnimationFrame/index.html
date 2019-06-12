@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/main.css">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <title>Juego Canvas</title>
+</head>
+<body>
+    <canvas width="600" height="300" id="canvas" class="canvas"></canvas>
+    <button id="boton" onclick="control()">
+    <img src="./img/play.png" id="imgboton">
+    </button>
+    <script type="text/javascript" src="./js/main.js"></script>
+</body>
+</html> 
+<!-- 
+
+<!doctype html>
+<html>
+<head>
+<style>
+    body{ background-color:white; }
+    #canvas{border:1px solid red; }
+</style>
+<script>
+window.onload=(function(){
+
+    // canvas related variables
+    var canvas=document.getElementById("canvas");
+    var ctx=canvas.getContext("2d");
+    var cw=canvas.width;
+    var ch=canvas.height;
+
+    // animation related variables
+    var minX=20;        // Keep the image animating 
+    var maxX=250;       // between minX & maxX
+    var x=minX;         // The current X-coordinate
+    var speedX=1;       // The image will move at 1px per loop 
+    var direction=1;    // The image direction: 1==righward, -1==leftward
+    var y=20;           // The Y-coordinate
+
+    // Load a new image
+    // IMPORTANT!!! You must give the image time to load by using img.onload!
+    var img=new Image();
+    img.onload=start;
+    img.src="img/pause.png";
+    function start(){
+        // the image is fully loaded sostart animating
+        requestAnimationFrame(animate);
+    }
+
+    function animate(time){
+
+        // clear the canvas
+        ctx.clearRect(0,0,cw,ch);
+
+        // draw
+        ctx.drawImage(img,x,y);
+
+        // update
+        x += speedX * direction;
+        // keep "x" inside min & max
+        if(x<minX){ x=minX; direction*=-1; }
+        if(x>maxX){ x=maxX; direction*=-1; }
+
+        // request another loop of animation
+        requestAnimationFrame(animate);
+    }
+
+}); // end $(function(){});
+</script>
+</head>
+<body>
+    <canvas id="canvas" width=512 height=512></canvas>
+</body>
+</html>  -->
