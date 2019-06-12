@@ -1,7 +1,11 @@
 
+/*juego modificado Boberto*/
+
+
+
 //ancho y alto para el canvas
-const canvasWidth = 850;
-const canvasHeight = 350;
+const canvasWidth = 1200;
+const canvasHeight = 700;
 
 const canvas = document.getElementById('canvas');
 
@@ -18,11 +22,11 @@ const ctx = canvas.getContext("2d");
 
 
 //ancho y alto para usar en el spritesheet, tomado de las propiedades de la imagen
-const spriteWidth = 864;
-const spriteHeight= 280;
+const spriteWidth = 1472;
+const spriteHeight= 325;
 
 //manejo de 8 columnas y 2 filas para los spritesheet
-const rows = 2;
+const rows = 1;
 const cols = 8;
 
 // x y y cordenadas para renderizar el sprite
@@ -30,7 +34,7 @@ const cols = 8;
 var x = 0;
 
 //sirve para moverse en el eje y en este caso es estatica
-var y = 0;
+var y = canvasHeight-spriteHeight;
 
 // Para obtener el ancho de un solo sprite dividimos el ancho del sprite con el número de columnas
 // porque todos los sprites son de igual anchura y altura
@@ -63,7 +67,7 @@ var trackRigth = 0;
 
 //1st (second) row for the left movement (counting the index from 0)
 // 1ª fila (segunda) para el movimiento a la izquierda (contando el índice desde 0)
-var trackLeft = 1;
+var trackLeft = 0;
 
 
 
@@ -77,7 +81,7 @@ var right = true;
 //creando un objeto imagen
 var character = new Image();
 
-character.src = "img/character.png"
+character.src = "img/boberto.png"
 
 function moverLeft() {
   left = true;
@@ -93,6 +97,15 @@ function moverRight() {
 // Como puede ver una variable llamada curFrame que se inicializa con 0.
 // Tenemos que actualizarla cada vez que procesemos un sprite. Así que crea
 // una función llamada updateFrame () 
+
+
+//pruerba curva de BEZIER;
+
+const bezier = ctx.quadraticCurveTo(130, 5, 180, 160);
+
+
+console.log("bezier",bezier);
+
 
 function updateFrame(){
 //enemos que borrar el sprite ya dibujado antes de renderizar el nuevo sprite.
@@ -122,13 +135,13 @@ function updateFrame(){
   }
 
 
-  console.log("variable x", x);
-  console.log("variable y", y);
-  console.log("variable width", width);
-  console.log("variable heigth", heigth);
-  console.log("variable curFrame", curFrame)
-  console.log("variable scrX", srcX);
-  console.log("variable scrY", srcY);
+  // console.log("variable x", x);
+  // console.log("variable y", y);
+  // console.log("variable width", width);
+  // console.log("variable heigth", heigth);
+  // console.log("variable curFrame", curFrame)
+  // console.log("variable scrX", srcX);
+  // console.log("variable scrY", srcY);
   
  
 }
@@ -141,9 +154,33 @@ function draw() {
   //actualizamos el frame
   updateFrame();
   // ctx.context.drawImage(Image, dX, dY, dWidth, dHeight);
+
+// Recortar imagen
+// El método drawImage() también puede utilizarse para recortar y pegar un trozo de la imagen en un canvas.
+// en este caso el método necesita nueve parámetros:
+// cxt.drawImage(imagen,Xi,Yi,ancho_i,alto_i,Xc,Yc,ancho_c,alto_c)
+// El primer parámetro (imagen) es el objeto-imagen de javascript.
+
+// Los siguientes cuatro parámetros (del 2 al 5 inclusive) se refieren a la imagen. De éstos los dos primeros
+// (Xi,Yi) son las coordenadas del recorte dentro de la imagen, estas coordenadas se refieren al punto superior
+// izquierdo dentro de la imagen donde empieza el recorte. Los dos parámetros siguientes (ancho_i,alto_i) son el
+// ancho y el alto del recorte.
+
+// Los últimos cuatro parámetros (del 6 al 9 inclusive) se refieren al canvas. De éstos los dos primeros (Xc,Yc)
+// se refieren a las coordenadas del canvas donde se incluirá el recorte. Los otros dos (ancho_c,alto_c) son el ancho y el alto del recorte dentro del canvas.
   ctx.drawImage(character, srcX, srcY, width, heigth, x, y, width, heigth);
 
+  text();
   
+}
+
+
+//funcion para dibujar un texto
+
+function text() {
+  const text = "Mi juego";
+  ctx.font="bold 80px arial";
+  ctx.fillText(text, 500, 100, 800);
   
 }
 
