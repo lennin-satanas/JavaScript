@@ -18,6 +18,7 @@ function startAnimation() {
 }
 
 function StartFondo() {
+  
   document.getElementById("fondo").style.MsAnimationPlayState = "running";
   document.getElementById("fondo").style.webkitAnimationPlayState = "running";
   document.getElementById("fondo").style.MozAnimationPlayState = "running";
