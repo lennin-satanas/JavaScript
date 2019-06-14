@@ -20,26 +20,35 @@ body {
   max-width: 60vh;
   border: 10px solid red;
   transform: rotate(45deg);
-
-  animation: girar 5s ease-in-out;
-  animation-play-state: paused;
-
 }
-
 .fondo {
   background-image: url("../img/circularTrans.png");
   background-size: cover;
-
-  animation: girar2 5s ease-in-out;
-  animation-play-state: paused;
-  
 } 
+/*animaciones */
+.moveKamentsa{
+  animation: girarKamentsa 5s ease-in-out;
+  animation-fill-mode: forwards;
+  
+}
+.moveInga{
+  animation: girarInga 5s ease-in-out;
+  animation-fill-mode: forwards;
+}
+.moveZiona{
+  animation: girarZiona 5s ease-in-out;
+  animation-fill-mode: forwards;
+}
+.moveCofan{
+  animation: girarCofan 5s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
 .color {
   width: 50%;
   height: 50%;
   box-sizing: border-box;
   float: left;
- 
 }
 .left {
   border-right: 1px solid white;
@@ -60,21 +69,21 @@ body {
   opacity: 0.6;
   
 }
-.opacity:hover {
+ .clarity {
   opacity: 0;
   cursor: pointer;
 }
 /* temporales para ver el movimiento */
-.opacity2 {
+/*.opacity2 {
   background: yellow;
   opacity: 0.6;
   
-}
+} */
 
-.opacity2:hover {
+/* .opacity2:hover {
   opacity: 0;
   cursor: pointer;
-}
+} */
 
 .center{
   box-sizing: border-box;
@@ -89,45 +98,55 @@ body {
   background-image: url("../img/cuadroCentro.png");
   background-size: cover;
   z-index: 2;
-  
-  /* box-shadow: rgba(0, 0, 0, 0.315) 0px 0px 10px 10px, rgba(0, 0, 0, 0.315) 0px 0px 20px 20px inset; */
 }
 
-.simon{
+.principal-menu{
   margin: 0 auto;
   position: relative;
-  
 }
 .game-container{
   display: flex;
   height: 100vh;
 }
 
-@keyframes girar {
-  0% {
-    transform: rotate(45deg);
-  }
-  100%{
-    transform: rotate(360deg);
-  } 
-}
-
-@keyframes girar2 {
+@keyframes girarKamentsa {
   0% {
     transform: rotate(0deg);
   }
   100%{
-    transform: rotate(360deg);
+    transform: rotate(720deg);
+    animation-play-state: paused;
+  } 
+}
+
+@keyframes girarInga {
+  0% {
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(630deg);
+    
+  } 
+}
+
+@keyframes girarZiona {
+  0% {
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(450deg);
+    
+  } 
+}
+
+@keyframes girarCofan {
+  0% {
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(540deg);
+    
   } 
 }
 
 
-/* CSS JUEGO */
-
-.canvas {
-  border: red 1px solid;
-  background-image: url("../img/fondo.jpeg");
-  background-repeat: no-repeat;
-  background-size: cover;
-
-}

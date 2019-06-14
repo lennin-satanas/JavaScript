@@ -1,6 +1,9 @@
 
 /*juego modificado Boberto*/
 
+// var bucle;
+// var playing = false;
+
 
 
 //ancho y alto para el canvas
@@ -45,7 +48,7 @@ var width = spriteWidth / cols; // 864/8 = 108
 var heigth = spriteHeight / rows; // 280 / 2 = 140
 
 //velocidad del movimiento
-var speed = 25;
+var speed = 2;
 
 // Cada fila contiene 8 cuadros y al inicio mostraremos el primer cuadro
 // (asumiendo que el índice es 0)
@@ -83,6 +86,11 @@ var character = new Image();
 
 character.src = "img/boberto.png"
 
+
+// window.onload=function() {
+//   draw();
+// }
+
 function moverLeft() {
   left = true;
   right = false;
@@ -100,11 +108,6 @@ function moverRight() {
 
 
 //pruerba curva de BEZIER;
-
-const bezier = ctx.quadraticCurveTo(130, 5, 180, 160);
-
-
-console.log("bezier",bezier);
 
 
 function updateFrame(){
@@ -132,6 +135,8 @@ function updateFrame(){
   if(right && x < (canvasWidth / 2)){
     srcY = trackRigth * heigth;
     x+= speed;
+    // cancelAnimationFrame(bucle);
+    // playing = false;
   }
 
 
@@ -155,22 +160,24 @@ function draw() {
   updateFrame();
   // ctx.context.drawImage(Image, dX, dY, dWidth, dHeight);
 
-// Recortar imagen
-// El método drawImage() también puede utilizarse para recortar y pegar un trozo de la imagen en un canvas.
-// en este caso el método necesita nueve parámetros:
-// cxt.drawImage(imagen,Xi,Yi,ancho_i,alto_i,Xc,Yc,ancho_c,alto_c)
-// El primer parámetro (imagen) es el objeto-imagen de javascript.
+  // Recortar imagen
+  // El método drawImage() también puede utilizarse para recortar y pegar un trozo de la imagen en un canvas.
+  // en este caso el método necesita nueve parámetros:
+  // cxt.drawImage(imagen,Xi,Yi,ancho_i,alto_i,Xc,Yc,ancho_c,alto_c)
+  // El primer parámetro (imagen) es el objeto-imagen de javascript.
 
-// Los siguientes cuatro parámetros (del 2 al 5 inclusive) se refieren a la imagen. De éstos los dos primeros
-// (Xi,Yi) son las coordenadas del recorte dentro de la imagen, estas coordenadas se refieren al punto superior
-// izquierdo dentro de la imagen donde empieza el recorte. Los dos parámetros siguientes (ancho_i,alto_i) son el
-// ancho y el alto del recorte.
+  // Los siguientes cuatro parámetros (del 2 al 5 inclusive) se refieren a la imagen. De éstos los dos primeros
+  // (Xi,Yi) son las coordenadas del recorte dentro de la imagen, estas coordenadas se refieren al punto superior
+  // izquierdo dentro de la imagen donde empieza el recorte. Los dos parámetros siguientes (ancho_i,alto_i) son el
+  // ancho y el alto del recorte.
 
-// Los últimos cuatro parámetros (del 6 al 9 inclusive) se refieren al canvas. De éstos los dos primeros (Xc,Yc)
-// se refieren a las coordenadas del canvas donde se incluirá el recorte. Los otros dos (ancho_c,alto_c) son el ancho y el alto del recorte dentro del canvas.
+  // Los últimos cuatro parámetros (del 6 al 9 inclusive) se refieren al canvas. De éstos los dos primeros (Xc,Yc)
+  // se refieren a las coordenadas del canvas donde se incluirá el recorte. Los otros dos (ancho_c,alto_c) son el ancho y el alto del recorte dentro del canvas.
   ctx.drawImage(character, srcX, srcY, width, heigth, x, y, width, heigth);
 
   text();
+  
+  // bucle = requestAnimationFrame(draw);
   
 }
 
@@ -188,3 +195,5 @@ function text() {
 // en el lienzo. Esto se puede hacer fácilmente usando el método setInterval .
 
 setInterval(draw, 100);
+
+
