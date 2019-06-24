@@ -115,8 +115,6 @@ function reordenar(evt) {
 
 
 function animationTab(clone, id) {
-  
-  
   // // console.log("id del elemento padre", id);
   // // console.log("piezas2", piezas2);
 
@@ -124,7 +122,6 @@ function animationTab(clone, id) {
   console.log("id", id);
   // debugger
   switch (id)  {
-    
     case '0' : piezas2[0].classList.add('prueba');
                setTimeout(()=>removeClass(id),3000);   
       return;
@@ -177,9 +174,6 @@ function removeClass(id){
     case '8': piezas2[8].classList.remove('prueba');
       return;
   }
-
-
-
   piezas2[0].classList.remove('prueba')
 }
 
